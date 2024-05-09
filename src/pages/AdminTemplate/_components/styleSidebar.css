@@ -1,0 +1,21 @@
+.sidebar {
+    /* width: 200px; */
+    height: 100vh;
+    padding: 20px;
+}
+
+.sidebar .nav-item a {
+    color: white;
+    text-decoration: none;
+    /* align-items: center; */
+    text-align: center;
+
+}
+.sidebar .nav-item:nth-child(2),.sidebar .nav-item:nth-child(3){
+    box-shadow: 0 0 10px 5px rgba(199, 173, 173, 0.548);
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    margin: 20px 40px;
+}
