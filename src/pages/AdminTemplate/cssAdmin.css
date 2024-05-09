@@ -1,0 +1,10 @@
+.adminPage{
+    display: flex;
+}
+.adminPage .left{
+    max-width: 30%;
+}
+.adminPage .right{
+    max-width: 70%;
+    margin-left: 20px;
+}
