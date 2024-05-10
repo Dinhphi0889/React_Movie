@@ -1,5 +1,6 @@
-import { combineReducers } from 'redux'
+import { combineReducers } from "redux";
+import listMovieReducer from "../pages/HomeTemplate/HomePage/duck/listMovieReducer";
 
-const rootReducer = combineReducers({})
+const rootReducer = combineReducers({ listMovieReducer });
 
-export default rootReducer
+export default rootReducer;
