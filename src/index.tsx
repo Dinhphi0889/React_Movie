@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
@@ -7,29 +6,14 @@ import reportWebVitals from "./reportWebVitals";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import "jquery/dist/jquery.min.js";
-
-=======
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import 'bootstrap/dist/js/bootstrap.bundle.min.js';
-import store from './store';
-import { Provider } from 'react-redux'
-<<<<<<< HEAD
->>>>>>> 29e484e3e27a25994e0d9295dd75a47b3236011a
-=======
->>>>>>> 29e484e3e27a25994e0d9295dd75a47b3236011a
+import store from "./store";
+import { Provider } from "react-redux";
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
 );
 root.render(
   <Provider store={store}>
-  <Provider store={store}>
     <App />
-  </Provider>
   </Provider>
 );
 
