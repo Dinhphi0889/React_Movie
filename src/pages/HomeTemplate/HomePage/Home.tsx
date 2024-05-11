@@ -24,6 +24,7 @@ export default function Home() {
 
     if (data && data.length > 0) {
       return data.map((item) => {
+        console.log(item)
         return data.map((movie) => (
           <MovieComponent key={movie.biDanh} movie={movie} />
         ));

@@ -33,23 +33,23 @@ export default function MovieComponent(props: Props) {
             </small>
           </p>
           <div className="d-flex justify-content-center">
-            <button
+            <a href="detail-movie"
               style={{ fontWeight: "bold" }}
               className="btn btn-outline-warning my-2 my-sm-0 mr-4 px-3"
-              type="submit"
+              type="button"
             >
               Chi tiết
-            </button>
-            <button
+            </a>
+            <a href="ticket-movie"
               style={{
                 backgroundColor: "orange",
                 fontWeight: "bold",
               }}
               className="btn-booking btn btn-warning my-2 my-sm-0 px-3"
-              type="submit"
+              type="button"
             >
               Đặt vé
-            </button>
+            </a>
           </div>
         </div>
       </div>

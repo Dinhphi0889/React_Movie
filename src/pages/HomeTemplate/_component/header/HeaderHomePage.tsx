@@ -8,7 +8,7 @@ export default function HeaderHomePage() {
           className="navbar navbar-expand-lg navbar-dark"
           style={{ backgroundColor: "black" }}
         >
-          <a className="navbar-brand" href="#">
+          <a className="navbar-brand" href="/">
             Cyber<span className="nav-brand-cyber">Cinema</span>
           </a>
           <button
@@ -25,24 +25,24 @@ export default function HeaderHomePage() {
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
             <ul className="navbar-nav mr-auto">
               <li className="nav-item active">
-                <a className="nav-link" href="#">
+                <a className="nav-link" href="/">
                   Trang Chủ
                 </a>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="#">
+                <a className="nav-link" href="ticket-movie">
                   Đặt vé
                 </a>
               </li>
             </ul>
             <form className="form-inline my-2 my-lg-0">
-              <button
+              <a href="/"
                 style={{ backgroundColor: "orange", fontWeight: "bold" }}
                 className="btn btn-warning my-2 my-sm-0"
-                type="submit"
+                type="button"
               >
                 Đăng nhập
-              </button>
+              </a>
             </form>
           </div>
         </nav>
