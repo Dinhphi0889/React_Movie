@@ -10,7 +10,7 @@ export default function ListsFilmPage() {
 
         <SideBar />
       </div>
-      <div className='right'>
+      <div className='right container'>
         <Outlet />
       </div>
     </div>

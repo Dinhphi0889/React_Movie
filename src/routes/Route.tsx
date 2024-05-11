@@ -50,11 +50,9 @@ const routes: TypeRoutes[] = [
 const renderRoutes = () => {
     return routes.map((route, index) => {
         if (route.nested) {
-
             return (
                 <Route key={index} path={route.path} element={<route.element />}>
                     {route.nested.map((item) => (
-
                         <Route key={item.path} path={item.path} element={<item.element />} />
 
                     ))}
