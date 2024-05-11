@@ -1,11 +1,14 @@
-import React from 'react'
-import { Outlet } from 'react-router-dom'
+import { Outlet } from "react-router-dom";
+import HeaderHomePage from "./_component/header/HeaderHomePage";
+import FooterHomePage from "./_component/footer/FooterHomePage";
+import "../HomeTemplate/_component/style.css";
 
 export default function HomeTemplate() {
-    return (
-    <div>
-        <h3>Home</h3>
-        <Outlet />
+  return (
+    <div style={{ backgroundColor: "#1A191F" }}>
+      <HeaderHomePage />
+      <Outlet />
+      <FooterHomePage />
     </div>
-    )
+  );
 }

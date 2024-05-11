@@ -1,0 +1,25 @@
+.navbar-dark .navbar-brand {
+  font-size: 30px;
+  font-weight: bold;
+
+  margin-right: 50px;
+  padding: 5px;
+  display: flex;
+  align-items: center;
+}
+
+.nav-brand-cyber {
+  background-color: orange;
+  color: black;
+  border-radius: 3px;
+  padding: 5px;
+}
+
+.nav-link {
+  font-weight: bold;
+}
+
+.footer-copyright {
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 12px;
+}
