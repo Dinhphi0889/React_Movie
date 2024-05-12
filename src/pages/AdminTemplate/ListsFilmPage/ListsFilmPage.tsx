@@ -13,8 +13,6 @@ export default function ListsFilmPage() {
   const dispatch: any = useDispatch()
   const { data, loading } = useSelector((state: RootState) => state.listMovieAdminReducer)
 
-
-
   useEffect(() => {
     dispatch(actFetchListMovieAdmin())
   }, [])

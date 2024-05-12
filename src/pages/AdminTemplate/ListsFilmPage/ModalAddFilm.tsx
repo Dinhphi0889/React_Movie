@@ -1,19 +1,19 @@
-
 import { useSelector } from "react-redux"
 import { RootState } from "../../../store"
-import { useEffect, useState } from "react"
+import { useEffect, useRef, useState } from "react"
 import { TypeListMovieAdmin } from "../duck/type"
+import './../cssAdmin.css'
 
-// interface listEditMovie {
-//     maPhim: string | number,
-//     tenPhim: string,
-//     biDanh: string,
-//     trailer: string,
-//     hinhAnh: string,
-//     moTa: string,
-//     maNhom: string,
-//     ngayKhoiChieu: string,
-//     danhGia: number,
+// let listEditMovie: TypeListMovieAdmin = {
+//     maPhim: '',
+//     tenPhim: '',
+//     biDanh: '',
+//     trailer: '',
+//     hinhAnh: '',
+//     moTa: '',
+//     maNhom: '',
+//     ngayKhoiChieu: '',
+//     danhGia: 0,
 //     hot: false,
 //     dangChieu: false,
 //     sapChieu: false,
@@ -21,11 +21,36 @@ import { TypeListMovieAdmin } from "../duck/type"
 
 const ModalAddFilm = () => {
     const { data } = useSelector((state: RootState) => state.modalEditMovie)
+    const [values, setValues] = useState<any>(null);
 
+    useEffect(() => {
+        // lắng nghe khi có data edit thì mình gán giá trị lại cho values
+        if (data) {
+            setValues(data);
+        }
+    }, [data]);
 
     const handleOnChange = (event: any) => {
         const { name, value } = event.target
-        console.log(name, value)
+        setValues({ ...values, [name]: value })
+        console.log(values)
+
+    }
+    const handCheckBox = (event: any) => {
+        const { name, checked } = event.target
+        if (name === 'hot') {
+            values[name] = checked
+        } else if (name === 'dangChieu') {
+            values[name] = checked
+        } else if (name === 'sapChieu') {
+            values[name] = checked
+        }
+        setValues({ ...values, [name]: checked })
+        console.log(values)
+    }
+
+    const handleSubmit = () => {
+        console.log(values)
     }
 
     return (
@@ -42,7 +67,10 @@ const ModalAddFilm = () => {
                 role="document">
                 <div className="modal-content">
                     <div className="modal-header">
-                        <h5 className="modal-title">Detail</h5>
+                        <h4 style={{
+                            color: 'black'
+                        }}
+                            className="modal-title">Chỉnh Sửa</h4>
                         <button
                             type="button"
                             className="close"
@@ -57,32 +85,40 @@ const ModalAddFilm = () => {
                                 <div>
                                     <div className="form-group">
                                         <label><h6>Mã Phim</h6></label>
-                                        <input type="number" name="maPhim" className="form-control" id="maPhim" aria-describedby="emailHelp" value={data?.maPhim}
-                                            onChange={handleOnChange} />
+                                        <input type="number" name="maPhim" className="form-control" id="maPhim"
+                                            value={values?.maPhim || ""}
+                                            onChange={handleOnChange}
+                                            disabled={!!data} />
                                     </div>
                                     <div className="form-group">
                                         <label><h6>Tên Phim</h6></label>
-                                        <input type="text" className="form-control" id="tenPhim"
-                                            value={data?.tenPhim}
+                                        <input type="text"
+                                            name="tenPhim" className="form-control" id="tenPhim"
+                                            value={values?.tenPhim || ""}
                                             onChange={handleOnChange}
                                         />
                                     </div>
                                     <div className="form-group">
                                         <label><h6>Bí Danh</h6></label>
-                                        <input type="text" className="form-control" id="biDanh"
-                                            value={data?.biDanh}
+                                        <input type="text"
+                                            name="biDanh"
+
+                                            className="form-control" id="biDanh"
+                                            value={values?.biDanh || ""}
                                             onChange={handleOnChange} />
                                     </div>
                                     <div className="form-group">
                                         <label><h6>Trailer</h6></label>
-                                        <input type="text" className="form-control" id="trailer"
-                                            value={data?.trailer}
+                                        <input type="text"
+                                            name="trailer"
+                                            className="form-control" id="trailer"
+                                            value={values?.trailer || ""}
                                             onChange={handleOnChange} />
                                     </div>
                                     <div className="form-group">
                                         <label><h6>Hình Ảnh</h6></label>
                                         <input type="text" name="hinhAnh" className="form-control" id="hinhAnh"
-                                            value={data?.hinhAnh}
+                                            value={values?.hinhAnh || ""}
                                             onChange={handleOnChange} />
                                         <span
                                             style={{
@@ -91,7 +127,7 @@ const ModalAddFilm = () => {
                                                 paddingTop: '10px'
                                             }}
                                         >
-                                            <img src={data?.hinhAnh} alt="" style={{
+                                            <img src={values?.hinhAnh} alt="" style={{
                                                 width: '150px',
                                             }}></img>
                                         </span>
@@ -99,26 +135,26 @@ const ModalAddFilm = () => {
                                     <div className="form-group">
                                         <label><h6>Mô Tả</h6></label>
                                         <input type="text" name="moTa" className="form-control" id="moTa"
-                                            value={data?.moTa}
+                                            value={values?.moTa || ""}
                                             onChange={handleOnChange} />
                                     </div>
                                     <div className="form-group">
                                         <label><h6>Mã Nhóm</h6></label>
                                         <input type="text" name="maNhom" className="form-control" id="maNhom"
-                                            value={data?.maNhom}
+                                            value={values?.maNhom || ""}
                                             onChange={handleOnChange} />
                                     </div>
                                     <div className="form-group">
                                         <label><h6>Ngày Khởi Chiếu</h6></label>
                                         <input type="datetime-local" name="ngayKhoiChieu" className="form-control" id="ngayKhoiChieu"
-                                            value={data?.ngayKhoiChieu}
+                                            value={values?.ngayKhoiChieu || ""}
                                             onChange={handleOnChange} />
 
                                     </div>
                                     <div className="form-group">
                                         <label><h6>Đánh Giá</h6></label>
                                         <input type="text" name="danhGia" className="form-control" id="danhGia"
-                                            value={data?.danhGia}
+                                            value={values?.danhGia || ""}
                                             onChange={handleOnChange} />
                                     </div>
                                     <div className="form-group"
@@ -129,11 +165,11 @@ const ModalAddFilm = () => {
                                         }}>
                                         <label><h6>Độ Hot</h6></label>
                                         <input type="checkbox" name="hot" className="form-control" id="hot"
-                                            checked={data?.hot ? true : false}
+                                        
                                             style={{
                                                 width: '140px'
                                             }}
-                                            onChange={handleOnChange}
+                                            onChange={handCheckBox}
                                         />
 
                                     </div>
@@ -145,11 +181,12 @@ const ModalAddFilm = () => {
                                         }}>
                                         <label><h6>Đang Chiếu</h6></label>
                                         <input type="checkbox" name="dangChieu" className="form-control" id="dangChieu"
-                                            checked={data?.dangChieu ? true : false}
+
+                                            // checked={values?.dangChieu ? true : false}
                                             style={{
                                                 width: '75px'
                                             }}
-                                            onChange={handleOnChange}
+                                            onChange={handCheckBox}
                                         />
                                     </div>
                                     <div className="form-group"
@@ -160,11 +197,12 @@ const ModalAddFilm = () => {
                                         }}>
                                         <label><h6>Sắp Chiếu</h6></label>
                                         <input type="checkbox" name="sapChieu" className="form-control" id="sapChieu"
-                                            checked={data?.sapChieu ? true : false}
+
+                                            checked={values?.sapChieu ? true : false}
                                             style={{
                                                 width: '100px'
                                             }}
-                                            onChange={handleOnChange}
+                                            onChange={handCheckBox}
                                         />
                                     </div>
                                 </div>
@@ -172,8 +210,11 @@ const ModalAddFilm = () => {
                         </table>
                     </div>
                     <div className="modal-footer">
-                        <button className="btn btn-success" type="submit">Lưu</button>
-                        <button className="btn btn-danger" type="button">Huỷ</button>
+                        <button className="btn btn-success"
+                            data-dismiss='modal'
+                            type="submit"
+                            onClick={handleSubmit}>Lưu</button>
+                        <button className="btn btn-danger" type="button" data-dismiss='modal'>Huỷ</button>
                     </div>
                 </div>
             </div>
