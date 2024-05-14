@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { actFetchData } from "./duck/action";
 import { RootState } from "../../../store";
 import MovieComponent from "./Movie";
+import './../_component/style.css'
 
 export default function Home() {
   const dispatch: any = useDispatch();
@@ -24,7 +25,6 @@ export default function Home() {
 
     if (data && data.length > 0) {
       return data.map((item) => {
-        console.log(item)
         return data.map((movie) => (
           <MovieComponent key={movie.biDanh} movie={movie} />
         ));
@@ -33,7 +33,7 @@ export default function Home() {
   };
 
   return (
-    <div className="container">
+    <div className="container bodyHomePage">
       <h3 className="mt-3">NEW ITEMS</h3>
       <div className="row ">{renderListMovie()}</div>
     </div>

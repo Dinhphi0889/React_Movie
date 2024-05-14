@@ -165,7 +165,7 @@ const ModalAddFilm = () => {
                                         }}>
                                         <label><h6>Độ Hot</h6></label>
                                         <input type="checkbox" name="hot" className="form-control" id="hot"
-                                        
+
                                             style={{
                                                 width: '140px'
                                             }}

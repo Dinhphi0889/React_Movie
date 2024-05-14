@@ -8,6 +8,7 @@ import RegisterPage from "../pages/AuthenPage/RegisterPage";
 import { Route } from "react-router-dom";
 import HomeTemplate from "../pages/HomeTemplate/HomeTemplate";
 import AdminTemplate from "../pages/AdminTemplate/AdminTemplate";
+import listUserPage from "../pages/AdminTemplate/listUserPage/ListUserPage";
 
 
 
@@ -33,6 +34,7 @@ const routes: TypeRoutes[] = [
         nested: [
             { path: 'add-film', element: AddFilmPage },
             { path: 'lists-film', element: ListsFilmPage },
+            { path: 'list-user', element: listUserPage },
         ],
     },
 

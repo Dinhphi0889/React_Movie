@@ -1,4 +1,11 @@
+import LoginPage from "../../../AuthenPage/LoginPage";
+import RegisterPage from "../../../AuthenPage/RegisterPage";
 import "../style.css";
+
+const hanleSubmit = (event: any) => {
+  event.preventDefault();
+
+}
 
 export default function HeaderHomePage() {
   return (
@@ -35,15 +42,22 @@ export default function HeaderHomePage() {
                 </a>
               </li>
             </ul>
-            <form className="form-inline my-2 my-lg-0">
-              <a href="/"
-                style={{ backgroundColor: "orange", fontWeight: "bold" }}
+            <form onSubmit={hanleSubmit} className="form-inline my-2 my-lg-0">
+              <button
+                // id="login"
+                data-toggle='modal'
+                data-target='#loginModal'
+                style={{
+                  backgroundColor: "orange",
+                  fontWeight: "bold"
+                }}
                 className="btn btn-warning my-2 my-sm-0"
-                type="button"
               >
                 Đăng nhập
-              </a>
+              </button>
             </form>
+              <LoginPage />
+              <RegisterPage/>
           </div>
         </nav>
       </div>
