@@ -11,11 +11,10 @@ export default function ListUserPage() {
     }, [])
 
     const { data } = useSelector((state: RootState) => state.ListUserAdmin)
-
+    console.log(data)
     const handleListUserAdmin = () => {
         if (data) {
             return data.map((user, index) => {
-                console.log(user)
                 return <tr key={index}>
                     <th scope="row">{user.taiKhoan}</th>
                     <td>{user.hoTen}</td>

@@ -1,40 +1,39 @@
 import * as ActionType from './constants'
-import { AppStateDetail, Action, AppState } from '../../../../store/type'
-import { CurrentUser } from '../../../AuthenPage/LoginPage/duck/type'
-import { deflate } from 'zlib'
+import { AppStateDetail, Action } from '../../../../store/type'
+import { CurrentUser } from './type'
 
-const initialState: AppState<CurrentUser> = {
+const currentUser = localStorage.getItem('user')
+
+const initialState: AppStateDetail<CurrentUser> = {
     loading: false,
-    data: null,
-    error: null
+    data: currentUser ? JSON.parse(currentUser) : null,
+    error: false,
 }
 
-
-const ListUserAdmin = (state = initialState, action: Action) => {
+const LoginReducer = (state = initialState, action: Action) => {
     switch (action.type) {
-        case ActionType.LISTUSER_REQUEST:
+        case ActionType.LOGIN_REQUEST: {
 
             state.loading = true;
             state.data = null;
             state.error = null;
             return { ...state }
-
-
-        case ActionType.LISTUSER_SUCCESS:
+        }
+        case ActionType.LOGIN_SUCCESS: {
             state.loading = false;
             state.data = action.payload;
             state.error = null;
             return { ...state }
-
-        case ActionType.LISTUSER_FAILED:
+        }
+        case ActionType.LOGIN_FAILED: {
             state.loading = false
             state.data = null
             state.error = action.payload
             return { ...state }
+        }
 
         default:
             return { ...state }
-
     }
 }
-export default ListUserAdmin
+export default LoginReducer

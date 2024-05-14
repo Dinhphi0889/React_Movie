@@ -1,6 +1,10 @@
-import LoginPage from "../../../AuthenPage/LoginPage";
-import RegisterPage from "../../../AuthenPage/RegisterPage";
+import { useEffect, useState } from "react";
+import LoginPage from "../../../AuthenPage/LoginPage/LoginPage";
+import RegisterPage from "../../../AuthenPage/RegisterPage/RegisterPage";
 import "../style.css";
+import { Navigate, useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { RootState } from "../../../../store";
 
 const hanleSubmit = (event: any) => {
   event.preventDefault();
@@ -8,6 +12,18 @@ const hanleSubmit = (event: any) => {
 }
 
 export default function HeaderHomePage() {
+
+  const { data } = useSelector((state: RootState) => state.LoginReducer)
+  const [isLogin, setIsLogin] = useState(false)
+
+
+  useEffect(() => {
+    if (data) {
+      setIsLogin(true)
+    }
+  }, [data])
+
+
   return (
     <div style={{ backgroundColor: "black" }}>
       <div className="container">
@@ -43,21 +59,32 @@ export default function HeaderHomePage() {
               </li>
             </ul>
             <form onSubmit={hanleSubmit} className="form-inline my-2 my-lg-0">
-              <button
-                // id="login"
-                data-toggle='modal'
-                data-target='#loginModal'
+              {isLogin
+                ? (<button className="btn btn-success"
                 style={{
-                  backgroundColor: "orange",
-                  fontWeight: "bold"
+                  fontSize:'28px',
+                  color:'white',
+                  padding:'5px 20px'
+                  
                 }}
-                className="btn btn-warning my-2 my-sm-0"
-              >
-                Đăng nhập
-              </button>
+                >
+                  <i className="fa-solid fa-user"></i>
+
+                </button>)
+                : (<div><button
+                  data-toggle='modal'
+                  data-target='#loginModal'
+                  style={{
+                    backgroundColor: "orange",
+                    fontWeight: "bold"
+                  }}
+                  className="btn btn-warning my-2 my-sm-0"
+                >
+                  Đăng nhập
+                </button></div>)}
             </form>
-              <LoginPage />
-              <RegisterPage/>
+            <LoginPage />
+            <RegisterPage />
           </div>
         </nav>
       </div>

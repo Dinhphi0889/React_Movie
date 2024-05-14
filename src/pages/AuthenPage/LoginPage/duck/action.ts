@@ -1,6 +1,6 @@
-import { Action } from "../../../store/type";
+import { Action } from "../../../../store/type";
 import * as ActionType from './constants'
-import api from "../../../api/api";
+import api from "../../../../api/api";
 
 export const actFetchLogin = (user: { taiKhoan: string, matKhau: string }) => {
     return (dispatch: any) => {
@@ -11,6 +11,7 @@ export const actFetchLogin = (user: { taiKhoan: string, matKhau: string }) => {
                 dispatch(actLoginSuccess(result.data.content))
             })
             .catch((error) => {
+                alert('Sai Tài Khoản Hoặc Mật Khẩu')
                 dispatch(actLoginFailed(error))
             })
     }

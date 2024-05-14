@@ -6,6 +6,8 @@ import MovieComponent from "./Movie";
 import './../_component/style.css'
 
 export default function Home() {
+
+
   const dispatch: any = useDispatch();
   const { data, loading } = useSelector(
     (state: RootState) => state.listMovieReducer

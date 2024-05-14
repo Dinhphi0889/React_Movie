@@ -1,6 +1,30 @@
-import React from 'react'
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "../../../store";
+import { useState } from "react";
+import { actFetchRegister } from "./duck/action";
+
 
 export default function RegisterPage() {
+
+  const dispatch: any = useDispatch()
+
+  const handleOnSubmit = (event: any) => {
+    event.preventDefault();
+  }
+
+  const { data } = useSelector((state: RootState) => state.modalEditMovie)
+  const [values, setValues] = useState<any>(null);
+
+
+  const handleOnChange = (event: any) => {
+    const { name, value } = event.target
+    setValues({ ...values, [name]: value })
+
+  }
+  const handleRegister = () => {
+    dispatch(actFetchRegister(values))
+  }
+
   return (
     <div>
       <div className="modal fade" id="registerModal" tabIndex={-1} aria-labelledby="exampleModalLabel"
@@ -20,7 +44,8 @@ export default function RegisterPage() {
                   <input type="text"
                     id='inputTaiKhoanDangKi'
                     name='taiKhoan'
-                    className="form-control" />
+                    className="form-control"
+                    onChange={handleOnChange} />
                 </div>
 
                 <h6>Mật Khẩu</h6>
@@ -28,7 +53,8 @@ export default function RegisterPage() {
                   <input type="text"
                     id='inputPassWordDangKi'
                     name='matKhau'
-                    className="form-control" />
+                    className="form-control"
+                    onChange={handleOnChange} />
                 </div>
 
                 <h6>Email</h6>
@@ -36,28 +62,24 @@ export default function RegisterPage() {
                   <input type="text"
                     id='inputEmailDangKi'
                     name='email'
-                    className="form-control" />
+                    className="form-control"
+                    onChange={handleOnChange} />
                 </div>
                 <h6>Số Điện Thoại</h6>
                 <div className="input-group mb-3">
                   <input type="text"
                     id='inputSDTDangKi'
                     name='soDT'
-                    className="form-control" />
-                </div>
-                <h6>Mã Nhóm</h6>
-                <div className="input-group mb-3">
-                  <input type="text"
-                    id='inputMaNhomDangKi'
-                    name='maNhom'
-                    className="form-control" />
+                    className="form-control"
+                    onChange={handleOnChange} />
                 </div>
                 <h6>Họ Tên</h6>
                 <div className="input-group mb-3">
                   <input type="text"
                     id='inputHoTenDangKi'
                     name='hoTen'
-                    className="form-control" />
+                    className="form-control"
+                    onChange={handleOnChange} />
                 </div>
 
               </div>
@@ -65,7 +87,8 @@ export default function RegisterPage() {
             </div>
             <div className="modal-footer">
               <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
-              <button type="submit" className="btn btn-primary">Đăng Kí</button>
+              <button type="submit" className="btn btn-primary"
+                onClick={handleRegister}>Đăng Kí</button>
             </div>
           </div>
         </div>

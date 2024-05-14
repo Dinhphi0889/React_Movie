@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import './authenCss.css'
+import './../authenCss.css'
 import { NavLink } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 import { actFetchLogin } from './duck/action'
