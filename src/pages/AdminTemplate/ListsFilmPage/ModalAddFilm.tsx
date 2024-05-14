@@ -4,21 +4,6 @@ import { useEffect, useRef, useState } from "react"
 import { TypeListMovieAdmin } from "../duck/type"
 import './../cssAdmin.css'
 
-// let listEditMovie: TypeListMovieAdmin = {
-//     maPhim: '',
-//     tenPhim: '',
-//     biDanh: '',
-//     trailer: '',
-//     hinhAnh: '',
-//     moTa: '',
-//     maNhom: '',
-//     ngayKhoiChieu: '',
-//     danhGia: 0,
-//     hot: false,
-//     dangChieu: false,
-//     sapChieu: false,
-// }
-
 const ModalAddFilm = () => {
     const { data } = useSelector((state: RootState) => state.modalEditMovie)
     const [values, setValues] = useState<any>(null);
@@ -165,7 +150,7 @@ const ModalAddFilm = () => {
                                         }}>
                                         <label><h6>Độ Hot</h6></label>
                                         <input type="checkbox" name="hot" className="form-control" id="hot"
-                                        
+
                                             style={{
                                                 width: '140px'
                                             }}

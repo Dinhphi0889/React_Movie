@@ -1,6 +1,29 @@
+import { useEffect, useState } from "react";
+import LoginPage from "../../../AuthenPage/LoginPage/LoginPage";
+import RegisterPage from "../../../AuthenPage/RegisterPage/RegisterPage";
 import "../style.css";
+import { Navigate, useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { RootState } from "../../../../store";
+
+const hanleSubmit = (event: any) => {
+  event.preventDefault();
+
+}
 
 export default function HeaderHomePage() {
+
+  const { data } = useSelector((state: RootState) => state.LoginReducer)
+  const [isLogin, setIsLogin] = useState(false)
+
+
+  useEffect(() => {
+    if (data) {
+      setIsLogin(true)
+    }
+  }, [data])
+
+
   return (
     <div style={{ backgroundColor: "black" }}>
       <div className="container">
@@ -35,15 +58,33 @@ export default function HeaderHomePage() {
                 </a>
               </li>
             </ul>
-            <form className="form-inline my-2 my-lg-0">
-              <a href="/"
-                style={{ backgroundColor: "orange", fontWeight: "bold" }}
-                className="btn btn-warning my-2 my-sm-0"
-                type="button"
-              >
-                Đăng nhập
-              </a>
+            <form onSubmit={hanleSubmit} className="form-inline my-2 my-lg-0">
+              {isLogin
+                ? (<button className="btn btn-success"
+                style={{
+                  fontSize:'28px',
+                  color:'white',
+                  padding:'5px 20px'
+                  
+                }}
+                >
+                  <i className="fa-solid fa-user"></i>
+
+                </button>)
+                : (<div><button
+                  data-toggle='modal'
+                  data-target='#loginModal'
+                  style={{
+                    backgroundColor: "orange",
+                    fontWeight: "bold"
+                  }}
+                  className="btn btn-warning my-2 my-sm-0"
+                >
+                  Đăng nhập
+                </button></div>)}
             </form>
+            <LoginPage />
+            <RegisterPage />
           </div>
         </nav>
       </div>

@@ -3,11 +3,13 @@ import DetailMovie from "../pages/HomeTemplate/DetailMoviePage/DetailMovie";
 import SeatPage from "../pages/HomeTemplate/SeatPage/SeatPage";
 import AddFilmPage from "../pages/AdminTemplate/AddFilmPage/AddFilmPage";
 import ListsFilmPage from "../pages/AdminTemplate/ListsFilmPage/ListsFilmPage";
-import LoginPage from "../pages/AuthenPage/LoginPage";
-import RegisterPage from "../pages/AuthenPage/RegisterPage";
+import LoginPage from "../pages/AuthenPage/LoginPage/LoginPage";
+import RegisterPage from "../pages/AuthenPage/RegisterPage/RegisterPage";
 import { Route } from "react-router-dom";
 import HomeTemplate from "../pages/HomeTemplate/HomeTemplate";
 import AdminTemplate from "../pages/AdminTemplate/AdminTemplate";
+import listUserPage from "../pages/AdminTemplate/listUserPage/ListUserPage";
+import SettingAccount from "../pages/AdminTemplate/SettingAccountPage/SettingAccount";
 
 
 
@@ -33,6 +35,8 @@ const routes: TypeRoutes[] = [
         nested: [
             { path: 'add-film', element: AddFilmPage },
             { path: 'lists-film', element: ListsFilmPage },
+            { path: 'list-user', element: listUserPage },
+            { path: 'setting-account', element: SettingAccount },
         ],
     },
 
