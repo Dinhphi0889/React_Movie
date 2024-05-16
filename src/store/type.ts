@@ -7,3 +7,8 @@ export type Appstate<T> = {
   data: T[] | null;
   error: any;
 };
+export type AppStateDetail<K> = {
+  loading: boolean;
+  data: K | null;
+  error: any;
+};

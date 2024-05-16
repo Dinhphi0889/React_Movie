@@ -1,5 +1,6 @@
 import { Movie } from "./duck/types";
 import "./style.css";
+import { Link } from "react-router-dom";
 
 type Props = {
   movie: Movie;
@@ -29,17 +30,18 @@ export default function MovieComponent(props: Props) {
           <p className="card-text">
             <small>
               Trình trạng:{" "}
-              {movie.dangChieu == true ? "Đang chiếu" : "Sắp chiếu"}
+              {movie.dangChieu === true ? "Đang chiếu" : "Sắp chiếu"}
             </small>
           </p>
           <div className="d-flex justify-content-center">
-            <button
+            <Link
               style={{ fontWeight: "bold" }}
               className="btn btn-outline-warning my-2 my-sm-0 mr-4 px-3"
               type="submit"
+              to={`/detail-movie/${movie.maPhim}`}
             >
               Chi tiết
-            </button>
+            </Link>
             <button
               style={{
                 backgroundColor: "orange",

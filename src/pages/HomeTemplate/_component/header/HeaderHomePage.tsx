@@ -1,5 +1,5 @@
 import "../style.css";
-
+import { NavLink } from "react-router-dom";
 export default function HeaderHomePage() {
   return (
     <div style={{ backgroundColor: "black" }}>
@@ -8,9 +8,9 @@ export default function HeaderHomePage() {
           className="navbar navbar-expand-lg navbar-dark"
           style={{ backgroundColor: "black" }}
         >
-          <a className="navbar-brand" href="#">
+          <NavLink className="navbar-brand" to="/">
             Cyber<span className="nav-brand-cyber">Cinema</span>
-          </a>
+          </NavLink>
           <button
             className="navbar-toggler"
             type="button"
@@ -25,14 +25,14 @@ export default function HeaderHomePage() {
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
             <ul className="navbar-nav mr-auto">
               <li className="nav-item active">
-                <a className="nav-link" href="#">
+                <NavLink className="nav-link" to="/">
                   Trang Chủ
-                </a>
+                </NavLink>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="#">
+                <NavLink className="nav-link" to="/ticket-movie">
                   Đặt vé
-                </a>
+                </NavLink>
               </li>
             </ul>
             <form className="form-inline my-2 my-lg-0">
