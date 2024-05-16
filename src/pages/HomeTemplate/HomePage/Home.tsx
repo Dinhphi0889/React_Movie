@@ -23,18 +23,16 @@ export default function Home() {
       );
 
     if (data && data.length > 0) {
-      return data.map((item) => {
-        return data.map((movie) => (
-          <MovieComponent key={movie.biDanh} movie={movie} />
-        ));
-      });
+      return data.map((movie) => (
+        <MovieComponent key={movie.biDanh} movie={movie} />
+      ));
     }
   };
 
   return (
     <div className="container">
-      <h3 className="mt-3">NEW ITEMS</h3>
-      <div className="row ">{renderListMovie()}</div>
+      <h3 className="my-5">NEW ITEMS</h3>
+      <div className="row my-3">{renderListMovie()}</div>
     </div>
   );
 }
