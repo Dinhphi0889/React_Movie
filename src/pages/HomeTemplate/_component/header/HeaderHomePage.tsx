@@ -8,21 +8,17 @@ import { RootState } from "../../../../store";
 
 const hanleSubmit = (event: any) => {
   event.preventDefault();
-
-}
+};
 
 export default function HeaderHomePage() {
-
-  const { data } = useSelector((state: RootState) => state.LoginReducer)
-  const [isLogin, setIsLogin] = useState(false)
-
+  const { data } = useSelector((state: RootState) => state.LoginReducer);
+  const [isLogin, setIsLogin] = useState(false);
 
   useEffect(() => {
     if (data) {
-      setIsLogin(true)
+      setIsLogin(true);
     }
-  }, [data])
-
+  }, [data]);
 
   return (
     <div style={{ backgroundColor: "black" }}>
@@ -33,7 +29,7 @@ export default function HeaderHomePage() {
         >
           <a className="navbar-brand" href="/">
             Cyber<span className="nav-brand-cyber">Cinema</span>
-          </NavLink>
+          </a>
           <button
             className="navbar-toggler"
             type="button"
@@ -50,38 +46,41 @@ export default function HeaderHomePage() {
               <li className="nav-item active">
                 <a className="nav-link" href="/">
                   Trang Chủ
-                </NavLink>
+                </a>
               </li>
               <li className="nav-item">
                 <a className="nav-link" href="ticket-movie">
                   Đặt vé
-                </NavLink>
+                </a>
               </li>
             </ul>
             <form onSubmit={hanleSubmit} className="form-inline my-2 my-lg-0">
-              {isLogin
-                ? (<button className="btn btn-success"
-                style={{
-                  fontSize:'28px',
-                  color:'white',
-                  padding:'5px 20px'
-                  
-                }}
+              {isLogin ? (
+                <button
+                  className="btn btn-success"
+                  style={{
+                    fontSize: "28px",
+                    color: "white",
+                    padding: "5px 20px",
+                  }}
                 >
                   <i className="fa-solid fa-user"></i>
-
-                </button>)
-                : (<div><button
-                  data-toggle='modal'
-                  data-target='#loginModal'
-                  style={{
-                    backgroundColor: "orange",
-                    fontWeight: "bold"
-                  }}
-                  className="btn btn-warning my-2 my-sm-0"
-                >
-                  Đăng nhập
-                </button></div>)}
+                </button>
+              ) : (
+                <div>
+                  <button
+                    data-toggle="modal"
+                    data-target="#loginModal"
+                    style={{
+                      backgroundColor: "orange",
+                      fontWeight: "bold",
+                    }}
+                    className="btn btn-warning my-2 my-sm-0"
+                  >
+                    Đăng nhập
+                  </button>
+                </div>
+              )}
             </form>
             <LoginPage />
             <RegisterPage />

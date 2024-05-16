@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../../store";
 import { useEffect } from "react";
 import dayjs from "dayjs";
+import "./style.css";
 
 export default function ShowTimeMovie() {
   const { id } = useParams();

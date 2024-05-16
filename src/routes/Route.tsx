@@ -23,7 +23,7 @@ const routes: TypeRoutes[] = [
     element: HomeTemplate,
     nested: [
       { path: "", element: Home },
-      { path: "detail-movie", element: DetailMovie },
+      { path: "detail-movie/:id", element: DetailMovie },
       { path: "ticket-movie", element: SeatPage },
     ],
   },
