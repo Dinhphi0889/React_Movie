@@ -4,6 +4,7 @@ import { actFetchData } from "./duck/action";
 import { RootState } from "../../../store";
 import MovieComponent from "./Movie";
 import "./../_component/style.css";
+import { actFetchBanner } from "../_component/carousel/duckGetCarousel/action";
 
 export default function Home() {
   const dispatch: any = useDispatch();
@@ -32,8 +33,10 @@ export default function Home() {
 
   return (
     <div className="container bodyHomePage">
-      <h3 className="mt-3">NEW ITEMS</h3>
-      <div className="row my-5">{renderListMovie()}</div>
+      <h1 className="mt-4 mb-4 d-flex justify-content-center">
+        DANH SÁCH PHIM
+      </h1>
+      <div className="row ">{renderListMovie()}</div>
     </div>
   );
 }

@@ -11,7 +11,6 @@ export const actFetchRegister = (user: { taiKhoan: string, matKhau: string }) =>
                 dispatch(actRegisterSuccess(result.data.content))
             })
             .catch((error) => {
-                console.log(error.response.data.content)
                 alert(error.response.data.content)
                 dispatch(actRegisterFailed(error))
             })
