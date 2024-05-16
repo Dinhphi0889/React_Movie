@@ -33,7 +33,7 @@ export default function Home() {
   return (
     <div className="container bodyHomePage">
       <h3 className="mt-3">NEW ITEMS</h3>
-      <div className="row ">{renderListMovie()}</div>
+      <div className="row my-5">{renderListMovie()}</div>
     </div>
   );
 }
