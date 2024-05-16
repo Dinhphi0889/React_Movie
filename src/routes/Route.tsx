@@ -11,61 +11,62 @@ import AdminTemplate from "../pages/AdminTemplate/AdminTemplate";
 import listUserPage from "../pages/AdminTemplate/listUserPage/ListUserPage";
 import SettingAccount from "../pages/AdminTemplate/SettingAccountPage/SettingAccount";
 
-
-
 type TypeRoutes = {
-    path: string;
-    element: any;
-    nested?: TypeRoutes[],
-}
+  path: string;
+  element: any;
+  nested?: TypeRoutes[];
+};
 
 const routes: TypeRoutes[] = [
-    {
-        path: '',
-        element: HomeTemplate,
-        nested: [
-            { path: '', element: Home },
-            { path: 'detail-movie', element: DetailMovie },
-            { path: 'ticket-movie', element: SeatPage }
-        ]
-    },
-    {
-        path: 'admin',
-        element: AdminTemplate,
-        nested: [
-            { path: 'add-film', element: AddFilmPage },
-            { path: 'lists-film', element: ListsFilmPage },
-            { path: 'list-user', element: listUserPage },
-            { path: 'setting-account', element: SettingAccount },
-        ],
-    },
+  {
+    path: "",
+    element: HomeTemplate,
+    nested: [
+      { path: "", element: Home },
+      { path: "detail-movie/:id", element: DetailMovie },
+      { path: "ticket-movie", element: SeatPage },
+    ],
+  },
+  {
+    path: "admin",
+    element: AdminTemplate,
+    nested: [
+      { path: "add-film", element: AddFilmPage },
+      { path: "lists-film", element: ListsFilmPage },
+      { path: "list-user", element: listUserPage },
+      { path: "setting-account", element: SettingAccount },
+    ],
+  },
 
-    {
-        path: 'login',
-        element: LoginPage,
-    },
-    {
-        path: 'register',
-        element: RegisterPage,
-    },
-
-]
+  {
+    path: "login",
+    element: LoginPage,
+  },
+  {
+    path: "register",
+    element: RegisterPage,
+  },
+];
 
 const renderRoutes = () => {
-    return routes.map((route, index) => {
-        if (route.nested) {
-            return (
-                <Route key={index} path={route.path} element={<route.element />}>
-                    {route.nested.map((item) => (
-                        <Route key={item.path} path={item.path} element={<item.element />} />
-
-                    ))}
-                </Route>
-            )
-        } else {
-            return <Route key={route.path} path={route.path} element={<route.element />} />
-        };
-
-    })
-}
-export default renderRoutes
+  return routes.map((route, index) => {
+    if (route.nested) {
+      return (
+        <Route key={index} path={route.path} element={<route.element />}>
+          {route.nested.map((item) => (
+            <Route
+              key={item.path}
+              path={item.path}
+              element={<item.element />}
+            />
+          ))}
+        </Route>
+      );
+    } else {
+      return (
+        <Route key={route.path} path={route.path} element={<route.element />} />
+      );
+    }
+  });
+};
+export default renderRoutes;

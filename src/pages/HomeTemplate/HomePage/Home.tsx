@@ -7,8 +7,6 @@ import './../_component/style.css'
 import { actFetchBanner } from "../_component/carousel/duckGetCarousel/action";
 
 export default function Home() {
-
-
   const dispatch: any = useDispatch();
   const { data, loading } = useSelector(
     (state: RootState) => state.listMovieReducer
@@ -28,11 +26,9 @@ export default function Home() {
       );
 
     if (data && data.length > 0) {
-      return data.map((item) => {
-        return data.map((movie) => (
-          <MovieComponent key={movie.biDanh} movie={movie} />
-        ));
-      });
+      return data.map((movie) => (
+        <MovieComponent key={movie.biDanh} movie={movie} />
+      ));
     }
   };
 
