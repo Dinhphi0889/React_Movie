@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { actFetchData } from "./duck/action";
 import { RootState } from "../../../store";
 import MovieComponent from "./Movie";
+import "./../_component/style.css";
 
 export default function Home() {
   const dispatch: any = useDispatch();
@@ -30,9 +31,9 @@ export default function Home() {
   };
 
   return (
-    <div className="container">
-      <h3 className="my-5">NEW ITEMS</h3>
-      <div className="row my-3">{renderListMovie()}</div>
+    <div className="container bodyHomePage">
+      <h3 className="mt-3">NEW ITEMS</h3>
+      <div className="row ">{renderListMovie()}</div>
     </div>
   );
 }

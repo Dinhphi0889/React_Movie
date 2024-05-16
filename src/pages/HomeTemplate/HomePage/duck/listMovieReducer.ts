@@ -1,9 +1,9 @@
 import * as ActionType from "./constant";
 import { Action } from "../../../../store/type";
-import { Appstate } from "../../../../store/type";
+import { AppState } from "../../../../store/type";
 import { Movie } from "./types";
 
-const initialState: Appstate<Movie> = {
+const initialState: AppState<Movie> = {
   loading: false,
   data: null,
   error: null,

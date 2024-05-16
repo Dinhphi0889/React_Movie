@@ -1,0 +1,19 @@
+.buttonSetting button{
+    margin-bottom: 5px;
+}
+.showListsMovie{
+    margin-top: 30px;
+}
+.showListsMovie .btn-add{
+    margin: 10px 0 20px 0;
+}
+.searchMovie{
+    display: block;
+    margin-bottom: 20px;
+}
+label{
+    margin: 10px 0 5px 0 !important;
+}
+.form-group{
+    display: inline;
+}

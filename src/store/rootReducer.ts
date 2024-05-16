@@ -1,12 +1,18 @@
 import { combineReducers } from "redux";
+import listMovieAdminReducer from "../pages/AdminTemplate/duck/reducer";
+import modalEditMovie from "../pages/AdminTemplate/ListsFilmPage/duckListFilm/reducer";
 import listMovieReducer from "../pages/HomeTemplate/HomePage/duck/listMovieReducer";
-import detailMovieReducer from "../pages/HomeTemplate/DetailMoviePage/duck/detailMovieReducer";
-import { showtimeReducer } from "../pages/HomeTemplate/DetailMoviePage/duckShowTime/showTimeReducer";
+import LoginReducer from "../pages/AuthenPage/LoginPage/duck/reducer";
+import ListUserAdmin from "../pages/AdminTemplate/listUserPage/duckListMovie/reducer";
+import RegisterReducer from "../pages/AuthenPage/RegisterPage/duck/reducer";
 
 const rootReducer = combineReducers({
+  listMovieAdminReducer,
+  modalEditMovie,
   listMovieReducer,
-  detailMovieReducer,
-  showtimeReducer,
+  LoginReducer,
+  ListUserAdmin,
+  RegisterReducer,
 });
 
 export default rootReducer;

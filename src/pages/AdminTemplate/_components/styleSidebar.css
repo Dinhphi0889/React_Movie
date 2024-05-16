@@ -1,21 +1,54 @@
 .sidebar {
     /* width: 200px; */
-    height: 100vh;
+    height: 100%;
     padding: 20px;
+}
+
+.sidebar ul {
+    position: sticky;
+    top: 10px;
 }
 
 .sidebar .nav-item a {
     color: white;
     text-decoration: none;
-    /* align-items: center; */
     text-align: center;
+    border-radius: 5px;
+    padding: 5px 15px;
 
 }
-.sidebar .nav-item:nth-child(2),.sidebar .nav-item:nth-child(3){
-    box-shadow: 0 0 10px 5px rgba(199, 173, 173, 0.548);
-    width: 50%;
+.sidebar .nav-item:first-child{
+    background-color: aqua;
+    border-radius: 5px;
+    padding: 10px 30px;
+    font-size: 20px;
+}
+.sidebar .nav-item:first-child a{
+    color: black;
+}
+
+.sidebar .nav-item:nth-child(2),
+.sidebar .nav-item:nth-child(3),
+.sidebar .nav-item:nth-child(4),
+.sidebar .nav-item:nth-child(5) {
+    /* box-shadow: 0 0 10px 5px rgba(199, 173, 173, 0.548); */
     display: flex;
     justify-content: center;
     text-align: center;
-    margin: 20px 40px;
+    margin: 20px 0;
+    border-radius: 5px;
+    transition: .3s;
+    
+}
+
+.sidebar .nav-item:nth-child(2):hover,
+.sidebar .nav-item:nth-child(3):hover {
+    box-shadow: 0 0 10px 5px rgba(8, 164, 63, 0.548);
+    background-color: rgba(8, 164, 63, 0.548);
+
+}
+
+.my-active {
+    box-shadow: 0 0 10px 5px rgba(8, 164, 63, 0.548);
+    background-color: rgba(8, 164, 63, 0.548);
 }

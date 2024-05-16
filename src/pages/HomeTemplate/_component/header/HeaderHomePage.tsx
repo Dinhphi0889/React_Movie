@@ -1,6 +1,29 @@
+import { useEffect, useState } from "react";
+import LoginPage from "../../../AuthenPage/LoginPage/LoginPage";
+import RegisterPage from "../../../AuthenPage/RegisterPage/RegisterPage";
 import "../style.css";
-import { NavLink } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { RootState } from "../../../../store";
+
+const hanleSubmit = (event: any) => {
+  event.preventDefault();
+
+}
+
 export default function HeaderHomePage() {
+
+  const { data } = useSelector((state: RootState) => state.LoginReducer)
+  const [isLogin, setIsLogin] = useState(false)
+
+
+  useEffect(() => {
+    if (data) {
+      setIsLogin(true)
+    }
+  }, [data])
+
+
   return (
     <div style={{ backgroundColor: "black" }}>
       <div className="container">
@@ -8,7 +31,7 @@ export default function HeaderHomePage() {
           className="navbar navbar-expand-lg navbar-dark"
           style={{ backgroundColor: "black" }}
         >
-          <NavLink className="navbar-brand" to="/">
+          <a className="navbar-brand" href="/">
             Cyber<span className="nav-brand-cyber">Cinema</span>
           </NavLink>
           <button
@@ -25,25 +48,43 @@ export default function HeaderHomePage() {
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
             <ul className="navbar-nav mr-auto">
               <li className="nav-item active">
-                <NavLink className="nav-link" to="/">
+                <a className="nav-link" href="/">
                   Trang Chủ
                 </NavLink>
               </li>
               <li className="nav-item">
-                <NavLink className="nav-link" to="/ticket-movie">
+                <a className="nav-link" href="ticket-movie">
                   Đặt vé
                 </NavLink>
               </li>
             </ul>
-            <form className="form-inline my-2 my-lg-0">
-              <button
-                style={{ backgroundColor: "orange", fontWeight: "bold" }}
-                className="btn btn-warning my-2 my-sm-0"
-                type="submit"
-              >
-                Đăng nhập
-              </button>
+            <form onSubmit={hanleSubmit} className="form-inline my-2 my-lg-0">
+              {isLogin
+                ? (<button className="btn btn-success"
+                style={{
+                  fontSize:'28px',
+                  color:'white',
+                  padding:'5px 20px'
+                  
+                }}
+                >
+                  <i className="fa-solid fa-user"></i>
+
+                </button>)
+                : (<div><button
+                  data-toggle='modal'
+                  data-target='#loginModal'
+                  style={{
+                    backgroundColor: "orange",
+                    fontWeight: "bold"
+                  }}
+                  className="btn btn-warning my-2 my-sm-0"
+                >
+                  Đăng nhập
+                </button></div>)}
             </form>
+            <LoginPage />
+            <RegisterPage />
           </div>
         </nav>
       </div>
