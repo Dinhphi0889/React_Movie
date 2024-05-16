@@ -36,8 +36,22 @@ export default function DetailMovie() {
             alt={data?.biDanh}
             style={{ objectFit: "cover" }}
           />
-          <div className="">
-            <button className="btn btn-success w-100 mt-3">Xem trailer</button>
+          <div className="d-flex">
+            <button
+              style={{ fontWeight: "bold" }}
+              className="btn btn-outline-warning mt-3 mr-2 w-100"
+            >
+              Xem trailer
+            </button>
+            <button
+              style={{
+                backgroundColor: "orange",
+                fontWeight: "bold",
+              }}
+              className="btn-booking btn mt-3 ml-2 w-100"
+            >
+              Đặt vé
+            </button>
           </div>
         </div>
         <div className="col-8">

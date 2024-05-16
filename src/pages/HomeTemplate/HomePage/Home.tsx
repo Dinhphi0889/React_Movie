@@ -5,6 +5,7 @@ import { RootState } from "../../../store";
 import MovieComponent from "./Movie";
 import "./../_component/style.css";
 import { actFetchBanner } from "../_component/carousel/duckGetCarousel/action";
+import Carousel from "../_component/carousel/Carousel";
 
 export default function Home() {
   const dispatch: any = useDispatch();
@@ -33,6 +34,7 @@ export default function Home() {
 
   return (
     <div className="container bodyHomePage">
+      <Carousel />
       <h1 className="mt-4 mb-4 d-flex justify-content-center">
         DANH SÁCH PHIM
       </h1>
