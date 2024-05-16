@@ -13,3 +13,8 @@ export type AppStateDetail<T> = {
     data: T | null,
     error?: any,
 }
+export type AppStateBanner<T> = {
+    loading: boolean,
+    banner: T[] | null,
+    error?: any,
+} 

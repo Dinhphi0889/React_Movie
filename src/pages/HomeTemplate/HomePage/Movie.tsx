@@ -8,7 +8,7 @@ type Props = {
 export default function MovieComponent(props: Props) {
   const { movie } = props;
   return (
-    <div className="col-3 mt-3">
+    <div className="col-3 mt-3 item-movie">
       <div className="card text-white bg-dark ">
         <div className="card-before">
           <img
@@ -16,7 +16,7 @@ export default function MovieComponent(props: Props) {
             className="card-img-top"
             alt={movie.biDanh}
           />
-          <a className=" play-button card__play">
+          <a href="" className=" play-button card__play">
             <i className="fa-regular fa-circle-play" />
           </a>
         </div>

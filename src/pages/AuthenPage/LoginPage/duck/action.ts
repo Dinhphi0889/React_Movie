@@ -8,6 +8,7 @@ export const actFetchLogin = (user: { taiKhoan: string, matKhau: string }) => {
         api.post(`QuanLyNguoiDung/DangNhap`, user)
             .then((result) => {
                 localStorage.setItem('user', JSON.stringify(result.data.content))
+                alert('Đăng nhập thành công')
                 dispatch(actLoginSuccess(result.data.content))
             })
             .catch((error) => {
