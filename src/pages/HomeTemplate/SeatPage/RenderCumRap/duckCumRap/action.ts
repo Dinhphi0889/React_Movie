@@ -3,10 +3,10 @@ import { Action } from "../../../../../store/type";
 import * as ActionType from './constant'
 import api from "../../../../../api/api";
 
-export const actFetchListCumRap = () => {
+export const actFetchListCumRap = (data: any) => {
   return (dispatch: any) => {
     dispatch(actGetCumRapRequest());
-      api.get('QuanLyRap/LayThongTinLichChieuPhim?MaPhim=13794')
+    api.get(`QuanLyRap/LayThongTinLichChieuPhim?MaPhim=${data}`)
       .then((result) => {
         dispatch(actGetCumRapSuccess(result.data.content.heThongRapChieu));
       })

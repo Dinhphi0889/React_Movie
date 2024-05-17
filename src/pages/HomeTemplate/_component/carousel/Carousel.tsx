@@ -25,7 +25,7 @@ export default function Carousel() {
 
         if (banner && banner.length > 0) {
             return banner.map((item, index) => {
-                return <RenderCarousel banner={item} />
+                return <RenderCarousel banner={item} key={index}/>
             })
         }
     }
