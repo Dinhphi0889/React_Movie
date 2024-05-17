@@ -41,10 +41,5 @@ export default function CumRap() {
         }
     }
 
-
-    return (
-        <div>
-            {handleCumRap()}
-        </div>
-    )
-}
+    return <div>{handleCumRap()}</div>;
+};
