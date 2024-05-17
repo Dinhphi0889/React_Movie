@@ -10,6 +10,7 @@ export default function SeatPage() {
   const { data } = useSelector((state: RootState) => state.getListCumRapReducer)
   if(data){
     return data.map((item) =>{
+      console.log(item)
     })
   }
 
