@@ -1,21 +1,15 @@
 import { useDispatch } from "react-redux";
 import { Movie } from "./duck/types";
 import "./style.css";
-import { Link, NavLink } from "react-router-dom";
-import { actFetchListCumRap } from "../SeatPage/RenderCumRap/duckCumRap/action";
+import { Link, NavLink, useParams } from "react-router-dom";
 
 type Props = {
   movie: Movie;
 };
 
-export default function MovieComponent(props: Props) {
+export default function MovieComponent(props: Props) {  
 
-  const dispatch: any = useDispatch()
-
-  const handleDatVe = (data: any) => {
-    dispatch(actFetchListCumRap(data))
-  }
-
+  
   const { movie } = props;
   return (
     <div className="col-3 mt-3 item-movie">
@@ -51,20 +45,18 @@ export default function MovieComponent(props: Props) {
             >
               Chi tiết
             </Link>
-            <NavLink
-              to={"ticket-movie"}
+            <Link
+              to={`/ticket-movie/${movie.maPhim}`}
               style={{
                 backgroundColor: "orange",
                 fontWeight: "bold",
               }}
               className="btn-booking btn btn-warning my-2 my-sm-0 px-3"
               type="button"
-              onClick={() => {
-                handleDatVe(movie.maPhim)
-              }}
+
             >
               Đặt vé
-            </NavLink>
+            </Link>
           </div>
         </div>
       </div>

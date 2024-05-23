@@ -1,32 +1,40 @@
-import React from 'react'
-import { Outlet } from 'react-router-dom'
+import React, { useEffect } from 'react'
+import { Outlet, useParams } from 'react-router-dom'
 import './cssSeatPage.css'
 import CumRap from './RenderCumRap/CumRap'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { RootState } from '../../../store'
+import { actFetchListCumRap } from './RenderCumRap/duckCumRap/action'
+import RenderGhe from './RenderCumRap/RenderGhe'
+
+
 
 export default function SeatPage() {
+  const dispatch: any = useDispatch()
 
-  const { data } = useSelector((state: RootState) => state.getListCumRapReducer)
-  if(data){
-    return data.map((item) =>{
-      console.log(item)
-    })
-  }
-
-
+  const { maPhim } = useParams()
+  useEffect(() => {
+    if (maPhim) {
+      dispatch(actFetchListCumRap(maPhim))
+    }
+  }, [])
 
   return (
     <div className='container seat'>
-      <h1>Đặt Vé</h1>
+
       <div className='row'>
 
-        <div className='col-4 cumRap'>
+        <div className='col-4 cumRap'
+          style={{
+            border: 'solid 1px white',
+            width: '100%',
+          }}>
           <ul className="list-group">
             <CumRap />
           </ul>
         </div>
-        <div className='col-8 chonGhe'>Danh sách ghế
+        <div className='col-8 chonGhe'>
+          <RenderGhe />
         </div>
       </div>
     </div>

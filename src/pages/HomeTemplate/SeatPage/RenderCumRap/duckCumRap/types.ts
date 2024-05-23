@@ -9,6 +9,7 @@ export type HeThongRapChieu = {
   cumRapChieu: CumRapChieu[];
   maHeThongRap: string;
   tenHeThongRap: string;
+  logo: string;
 }
 export type LichChieuPhim = {
   maLichChieu: string;
@@ -19,7 +20,6 @@ export type LichChieuPhim = {
   thoiLuong: number;
 }
 export type Content = {
-  logo: string;
   cumRapChieu: CumRapChieu[];
   heThongRapChieu: HeThongRapChieu[];
   maPhim: number;

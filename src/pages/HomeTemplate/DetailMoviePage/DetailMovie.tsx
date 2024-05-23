@@ -13,7 +13,6 @@ export default function DetailMovie() {
   const { data, loading, error } = useSelector(
     (state: RootState) => state.detailMovieReducer
   );
-  console.log(data);
 
   useEffect(() => {
     if (id) {

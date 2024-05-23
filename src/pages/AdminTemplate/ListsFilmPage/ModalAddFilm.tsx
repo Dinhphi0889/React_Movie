@@ -18,7 +18,6 @@ const ModalAddFilm = () => {
     const handleOnChange = (event: any) => {
         const { name, value } = event.target
         setValues({ ...values, [name]: value })
-        console.log(values)
 
     }
     const handCheckBox = (event: any) => {

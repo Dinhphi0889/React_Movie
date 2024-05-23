@@ -1,45 +1,99 @@
-import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { actFetchListCumRap } from './duckCumRap/action'
-import { AppState } from '../../../../store/type'
-import { CumRapChieu, HeThongRapChieu } from './duckCumRap/types'
+import { LichChieuPhim } from './duckCumRap/types'
 import { RootState } from '../../../../store'
-import { NavLink } from 'react-router-dom'
+import { NavLink, useParams } from 'react-router-dom'
+import { actFetchGhe } from '../duckRenderGhe/action'
 
 export default function CumRap() {
     const dispatch: any = useDispatch()
-    // useEffect(() => {
-    //     dispatch(actFetchListCumRap())
-    // }, [])
-    // debugger
-    const { data } = useSelector((state: RootState) => state.getListCumRapReducer)
-    console.log(data)
+
+    const { maLichChieu, maPhim } = useParams()
+
+    const { heThongRap } = useSelector((state: RootState) => state.getListCumRapReducer)
+
     const handleCumRap = () => {
-        if (data) {
-            console.log(data)
-            return data.map((item, index) => {
+        if (heThongRap && heThongRap.heThongRapChieu) {
+            return heThongRap.heThongRapChieu.map((item) => {
                 return item.cumRapChieu.map((itemCumRap, index) => {
-                    return <li key={index} className="list-group-item"
-                        style={{
-                            backgroundColor: '#1a191f'
-                        }}
-                    >
-                        <img
-                            style={{
-                                width: '50px',
-                                marginRight: '10px'
-                            }} src={item.logo}></img>
-                        <NavLink
-                            style={{
-                                textDecoration: 'none',
-                                color: 'white'
+                    return itemCumRap.lichChieuPhim.map((getMaLichChieu) => {
+                        return <li key={index} className="list-group-item"
+                            onClick={() => {
+                                RenderGhe(itemCumRap.lichChieuPhim)
                             }}
-                            to={''}>{itemCumRap.tenCumRap}
-                        </NavLink></li>
+                            style={{
+                                backgroundColor: '#1a191f',
+                                border: 'solid 1px white',
+                                margin: '20px 0'
+                            }}
+                        >
+                            <NavLink
+                                to={`/ticket-movie/${maPhim}/${getMaLichChieu.maLichChieu}`}
+                                style={{
+                                    textDecoration: 'none',
+                                    color: 'white',
+                                }}>
+
+                                <img src={itemCumRap.hinhAnh}
+                                    style={{
+                                        width: '100%',
+                                        marginBottom: '20px'
+                                    }}></img>
+                                <img
+                                    style={{
+                                        width: '50px',
+                                        marginRight: '10px'
+                                    }} src={item.logo}></img>
+                                <NavLink
+                                    style={{
+                                        textDecoration: 'none',
+                                        color: 'white',
+                                    }}
+                                    to={``}>Tên Rạp: {itemCumRap.tenCumRap}
+
+                                </NavLink>
+                                <h6
+                                    style={{
+                                        marginTop: '10px'
+                                    }}>
+                                    Địa Chỉ: {itemCumRap.diaChi}</h6>
+                            </NavLink>
+                        </li>
+                    })
+
                 })
             })
         }
     }
+    const RenderGhe = (data: any) => {
+        return data.map((value: LichChieuPhim) => {
+            dispatch(actFetchGhe(value.maLichChieu))
+        })
+    }
 
-    return <div>{handleCumRap()}</div>;
+
+    return <div>
+        <div>
+            <div className="card"
+                style={{
+                    width: '100%',
+                    backgroundColor: '#1a191f',
+                    marginTop: '10px'
+                }}
+            >
+                <img src={heThongRap?.hinhAnh} className="card-img-top" alt="..." />
+                <div className="card-body">
+                    <h5 className=""
+                        style={{
+                            marginBottom: '10px'
+                        }}>Tên Phim: {heThongRap?.tenPhim}</h5>
+                    <p className="">Mô Tả: {heThongRap?.moTa}</p>
+                </div>
+            </div>
+        </div>
+
+        <div>
+            {handleCumRap()}
+        </div>
+
+    </div>
 };

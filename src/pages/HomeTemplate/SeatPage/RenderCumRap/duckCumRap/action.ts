@@ -4,11 +4,12 @@ import * as ActionType from './constant'
 import api from "../../../../../api/api";
 
 export const actFetchListCumRap = (data: any) => {
+
   return (dispatch: any) => {
     dispatch(actGetCumRapRequest());
     api.get(`QuanLyRap/LayThongTinLichChieuPhim?MaPhim=${data}`)
       .then((result) => {
-        dispatch(actGetCumRapSuccess(result.data.content.heThongRapChieu));
+        dispatch(actGetCumRapSuccess(result.data.content));
       })
       .catch((error) => {
         dispatch(actGetCumRapFailed(error));

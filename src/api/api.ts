@@ -8,7 +8,7 @@ api.interceptors.request.use((config: any) => {
   const currentUser = getLocal ? JSON.parse(getLocal) : null
   config.headers = {
     ...config.headers,
-    authorization: currentUser ? `Bearer ${currentUser.accessTokent}` : "",
+    authorization: currentUser ? `Bearer ${currentUser.accessToken}` : "",
 
     TokenCybersoft:
       "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0ZW5Mb3AiOiJCb290Y2FtcCA2MiIsIkhldEhhblN0cmluZyI6IjE3LzEwLzIwMjQiLCJIZXRIYW5UaW1lIjoiMTcyOTEyMzIwMDAwMCIsIm5iZiI6MTcwMDE1NDAwMCwiZXhwIjoxNzI5MjcwODAwfQ.xKQVYYnO9233wkXRw5oU4Dtx41flqDuUnA0DbkDYRmM",
