@@ -17,4 +17,9 @@ export type AppStateBanner<T> = {
     loading: boolean,
     banner: T[] | null,
     error?: any,
-} 
+}
+export type AppStateHeThongRap<T>={
+  loading: boolean;
+  heThongRap: T | null;
+  error?: any;
+}

@@ -10,6 +10,7 @@ import HomeTemplate from "../pages/HomeTemplate/HomeTemplate";
 import AdminTemplate from "../pages/AdminTemplate/AdminTemplate";
 import listUserPage from "../pages/AdminTemplate/listUserPage/ListUserPage";
 import SettingAccount from "../pages/AdminTemplate/SettingAccountPage/SettingAccount";
+import Account from "../pages/HomeTemplate/AccountPage/Account";
 
 type TypeRoutes = {
   path: string;
@@ -24,12 +25,14 @@ const routes: TypeRoutes[] = [
     nested: [
       { path: "", element: Home },
       { path: "detail-movie/:id", element: DetailMovie },
-      { path: "ticket-movie", element: SeatPage },
+      { path: "ticket-movie/:maPhim", element: SeatPage },
+      { path: "ticket-movie/:maPhim/:maLichChieu", element: SeatPage },
+      { path: "account", element: Account },
     ],
   },
   {
     path: "admin",
-    element: AdminTemplate,
+    element: AdminTemplate, 
     nested: [
       { path: "add-film", element: AddFilmPage },
       { path: "lists-film", element: ListsFilmPage },

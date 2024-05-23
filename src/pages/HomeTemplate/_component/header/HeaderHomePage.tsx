@@ -2,18 +2,18 @@ import { useEffect, useState } from "react";
 import LoginPage from "../../../AuthenPage/LoginPage/LoginPage";
 import RegisterPage from "../../../AuthenPage/RegisterPage/RegisterPage";
 import "../style.css";
-import { Navigate, useNavigate } from "react-router-dom";
+import { Navigate, useNavigate, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../../../store";
 import { actFetchBanner } from "../carousel/duckGetCarousel/action";
 import Carousel from "../carousel/Carousel";
+import { logOut } from "./logOut";
 
 const hanleSubmit = (event: any) => {
   event.preventDefault();
 };
 
 export default function HeaderHomePage() {
-
 
   const dispatch: any = useDispatch()
 
@@ -26,6 +26,14 @@ export default function HeaderHomePage() {
       setIsLogin(true);
     }
   }, [data]);
+
+  const handleLogOut = () => {
+
+    localStorage.removeItem('user')
+    setIsLogin(false)
+    dispatch(logOut)
+  }
+
 
   return <div style={{ backgroundColor: "black" }}>
     <div className="container">
@@ -54,24 +62,38 @@ export default function HeaderHomePage() {
                 Trang Chủ
               </a>
             </li>
-            <li className="nav-item">
-              <a className="nav-link" href="ticket-movie">
-                Đặt vé
-              </a>
-            </li>
+
           </ul>
           <form onSubmit={hanleSubmit} className="form-inline my-2 my-lg-0">
             {isLogin ? (
-              <button
-                className="btn btn-success"
-                style={{
-                  fontSize: "28px",
-                  color: "white",
-                  padding: "5px 20px",
-                }}
-              >
-                <i className="fa-solid fa-user"></i>
-              </button>
+              <div className="dropdown">
+                <button
+                  className="btn btn-success"
+                  type="button"
+                  data-toggle="dropdown"
+                  aria-expanded="false"
+                  style={{
+                    fontSize: "28px",
+                    color: "white",
+                    padding: "5px 20px",
+                    borderRadius: '50%'
+                  }}
+                >
+                  <i className="fa-solid fa-user"
+                    style={{
+                      textAlign: 'center',
+                      marginRight: '0'
+                    }}
+                  ></i>
+                </button>
+                <div className="dropdown-menu">
+                  <a href="account" className="dropdown-item">Cài Đặt Tài Khoản</a>
+                  <button className="dropdown-item"
+                    onClick={handleLogOut}
+                  >Đăng Xuất</button>
+                </div>
+
+              </div>
             ) : (
               <div>
                 <button

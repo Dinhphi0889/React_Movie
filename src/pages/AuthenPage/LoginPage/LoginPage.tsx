@@ -3,6 +3,7 @@ import './../authenCss.css'
 import { NavLink } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 import { actFetchLogin } from './duck/action'
+import Account from '../../HomeTemplate/AccountPage/Account'
 
 
 
@@ -17,9 +18,11 @@ export default function LoginPage() {
   const handleOnChange = (event: any) => {
     const { name, value } = event.target
     setDataLogin({ ...dataLogin, [name]: value })
+    console.log([name],value)
   }
   const handleSubmit = () => {
     dispatch(actFetchLogin(dataLogin))
+
   }
 
 
